@@ -1,0 +1,14 @@
+def train_model_BGD(iter):
+    for epoch in range(iter):
+        for x,y in trainloader:
+            yhat = model(x)
+            loss = criterion(yhat, y)
+            get_surface.set_para_loss(model, loss.tolist())          
+            optimizer.zero_grad()
+            loss.backward()
+
+            optimizer.step()
+        get_surface.plot_ps()
+
+
+train_model_BGD(10)
